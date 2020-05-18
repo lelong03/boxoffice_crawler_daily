@@ -18,7 +18,7 @@ def clean_html(raw_html):
 def get_data(secret_string):
     data = b''
     run_count = 0
-    while len(data) == 0 and run_count < 5:
+    while len(data) == 0 and run_count < 2:
         run_count += 1
         print("run count: ", run_count)
         conn = http.client.HTTPSConnection("boxofficevietnam.com")
@@ -88,8 +88,15 @@ def get_sheet():
 
 
 if __name__ == '__main__':
-    secret_string = get_secret_string()
-    data = get_data(secret_string)
+    data = None
+    run_count = 0
+    while data is None and run_count < 5:
+        run_count += 1
+        secret_string = get_secret_string()
+        data = get_data(secret_string)
+        if data is None:
+            time.sleep(5)
+            print("retrying: ", run_count)
 
     if data is not None:
         sheet = get_sheet()
