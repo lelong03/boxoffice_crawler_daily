@@ -12,7 +12,7 @@ google-auth-oauthlib==0.4.1
 googleapis-common-protos==1.51.0
 gspread==3.6.0
 http-client==0.1.22
-httplib2==0.17.3
+httplib2==0.18.0
 idna==2.9
 lxml==4.5.0
 numpy==1.18.4
