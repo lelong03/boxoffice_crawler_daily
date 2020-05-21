@@ -20,7 +20,7 @@ def get_data():
 
     # Getting data from url
     browser.get(url)
-    time.sleep(9)
+    time.sleep(5)
     html = browser.page_source
     soup = BeautifulSoup(html, 'lxml')
     table_tag = soup.find('table', attrs={"id": "table_1"})
@@ -29,7 +29,11 @@ def get_data():
     for tr in table_body_tag.findAll('tr'):
         row = []
         for td in tr.findAll('td'):
-            row.append(td.text)
+            a = td.find('a')
+            if a is not None:
+                row.append(td.find('a').text)
+            else:
+                row.append(td.text)
         data.append(row)
     print(data)
     return data
