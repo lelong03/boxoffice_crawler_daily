@@ -16,7 +16,9 @@ def get_data():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
-    browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+    # browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+    browser = webdriver.Chrome('chromium-browser/chromedriver', options=chrome_options)
+
 
     # Getting data from url
     browser.get(url)
