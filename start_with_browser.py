@@ -2,6 +2,7 @@ import gspread
 from datetime import datetime
 from oauth2client.service_account import ServiceAccountCredentials
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
@@ -17,7 +18,8 @@ def get_data():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument('--no-sandbox')
     # browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
-    browser = webdriver.Chrome('chromium-browser/chromedriver', options=chrome_options)
+    service = Service("chromium-browser/chromedriver")
+    browser = webdriver.Chrome(service=service, options=chrome_options)
 
 
     # Getting data from url
